@@ -50,6 +50,12 @@ function textFor(slide, kind) {
 }
 
 function chipsFor(slide) {
+  if (slide.chips?.length) {
+    return slide.chips.map((c) => ({
+      label: c.label,
+      hint: c.hint,
+    }))
+  }
   if (slide.chapters?.length) {
     return slide.chapters.map((c) => ({
       label: c.title,
@@ -147,7 +153,9 @@ export function buildManuscriptPagesFromFullDeck() {
     }
 
     if (slide.layout === 'glass') {
-      page.chips = slide.bullets?.map((b) => ({ label: b }))
+      if (!page.chips?.length && slide.bullets?.length) {
+        page.chips = slide.bullets.map((b) => ({ label: b }))
+      }
       if (slide.highlight && !page.text) page.text = slide.highlight
     }
 

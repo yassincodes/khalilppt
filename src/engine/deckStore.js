@@ -3,7 +3,7 @@
  */
 import { buildManuscriptPagesFromFullDeck } from './khalilManuscriptBuild.js'
 
-const STORAGE_KEY = 'khalilppt-deck-v1'
+const STORAGE_KEY = 'khalilppt-deck-v2'
 
 export function seedPages() {
   return buildManuscriptPagesFromFullDeck()
